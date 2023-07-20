@@ -1,0 +1,138 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-image: url("https://wallpaperaccess.com/full/3393147.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+  }
+  
+header{
+    display: flex;
+    background-color: #FF0000;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.PokemonLogo{
+    mix-blend-mode: multiply;
+    filter: contrast(2);
+    height: 70px;
+    width: auto;
+    cursor: pointer;
+    margin-bottom: 20px;
+    background-color: #CDCDCD;
+    border: 2px solid #CDCDCD;
+}
+
+header h1{
+    display: flex;
+    font-family: "Pokemon Solid";
+    font-size: 40px;
+    color: #000;
+    text-align: center;
+}/*Pokedex header*/
+
+.Home{
+    display: flex;
+    list-style-type: none;
+    background-color: #B3A125;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 15px;
+}/*Back to home button*/
+
+.backButton{
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}/*Back button*/
+
+.pokedexes{
+    display: block;
+    columns: 2;
+    list-style-type: none;
+    margin: 10px;
+    border-radius: 30px;
+    padding: 10px;
+    text-transform: capitalize;
+}/*list of buttons*/
+
+.pokedexName{
+    display: flex;
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    margin-block: 20px;
+    cursor: pointer;
+    height: 100px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: space-around;
+    position: relative;
+}/*pokedex button*/
+
+  
+  .pokedexName:hover {
+    opacity: 0.8;
+  }
+  
+  .pokedexName::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #CC0000;
+
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .pokedexName:hover::before {
+    opacity: 1;
+  }
+
+.pokemons{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}/*list of buttons*/
+
+.pokemonName{
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}/*pokemon button*/
+
+
+.pokemonDetails{
+    display: flex;
+    background-color: #ddd;
+    border-collapse: collapse;
+    width: 100%;
+    text-transform: capitalize;
+}/*pokemon details table*/
+
+.PokemonDetails th, .PokemonDetails td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .PokemonDetails tr {
+    text-align: left;
+  }

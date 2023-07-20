@@ -1,28 +1,20 @@
-import { useEffect, useState } from "react";
-import Pokedex from "./Pokedex";
+import { useEffect, useMemo, useState } from "react";
+import PokedexList from "./Pokedex";
 import Pokemons from "./Pokemons";
 import PokeDetails from "./PokeDetails";
+const  _Pokedex =  require('pokeapi-js-wrapper');
+const pokedex = new _Pokedex.Pokedex();
 
 const App = () => {
 
-
+    
     //Hold Errors
     const [hasErr, setErr] = useState('');
-    
-    //Hold all the data returned from the API
-    const[runData, setData] = useState([]);
     
     //Hold user Selections
     const [selections, setSelections] = useState({pokedex: null, pokemon: null}); 
 
-    //async function to get the data needed every time to render something
-    const fetchData = async (url) =>{
-        const response = await fetch(url);
-        response
-            .json()
-            .then(response => setData(response))
-            .catch(err => setErr(err));
-    }
+ 
 
     //reset event handler will stay on the top always
     const reset = (event) => {
@@ -33,12 +25,20 @@ const App = () => {
 
 
     return (
-        <div class="App">
-            <button onClick={reset}>Back to Home</button>
-            {hasErr? 'An Error Occured': null}
-            {!hasErr && selections.pokedex === null && selections.pokemon === null? (<Pokedex fetch={fetchData} selections={selections} setSelections={setSelections} data={runData}/>):null}
-            {!hasErr && selections.pokedex !== null && selections.pokemon === null? (<Pokemons fetch={fetchData} selections={selections} setSelections={setSelections} data={runData}/>): null}
-            {!hasErr && selections.pokedex !== null && selections.pokemon !== null? (<PokeDetails fetch={fetchData} selections={selections} data={runData} setSelections={setSelections}/>): null}
+        <div className="App">
+            <header>
+                <img className="PokemonLogo" src="/pokemonLogo.png" height="70" onClick={reset}/>
+                <h1>Pokedex</h1>
+                <button onClick={reset} className="Home">Back to Home</button>
+            </header>
+
+            {hasErr? alert('An Error Occured'): null}
+
+            {(!hasErr && (selections.pokedex === null) && (selections.pokemon === null))? (<PokedexList setErr={setErr} selections={selections} setSelections={setSelections} />):null}
+            
+            <div>{(!hasErr && (selections.pokedex !== null) && (selections.pokemon === null))? (<Pokemons setErr={setErr} selections={selections} setSelections={setSelections} />): null}</div>
+            
+            <div>{(!hasErr && (selections.pokedex !== null) && (selections.pokemon !== null))? (<PokeDetails setErr={setErr} selections={selections}  setSelections={setSelections}/>): null}</div>
         </div>
     )
 }

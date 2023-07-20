@@ -10,27 +10,39 @@
  * @return  {Component} Will return the list of Pokedex when called
  */
 
-const Pokedex = ({fetch, setSelections, data}) => {
+import { useState } from "react";
+const  _Pokedex =  require('pokeapi-js-wrapper');
+const pokedex = new _Pokedex.Pokedex();
 
-    //Use setSelections to Make sure the selections are what they need to be entering this component. No mattter the way
-    setSelections({Pokedex: null, pokemon: null});
+const PokedexList = ({setErr, setSelections}) => {
 
-    //Callback to fetchData to get the information
-    fetch("https://pokeapi.co/api/v2/pokedex/");
+    const [list, setList] = useState([]);
 
-    //event handler to select pokedex. This component does not need GO Back button since this will be the first component to be rendered
-    const selectedPokedex = (name) => {
-        setSelections({pokedex: name, pokemon: null});
+    const fetchData = async () => {
+        return await pokedex.getPokedexsList()
+            .then(res => setList(res.results))
+            .catch(err => setErr(err));
     }
 
-    return(
-        <>
-            {data.results.map(pokedex => {  
-                return (<button onClick={() => selectedPokedex(pokedex.name)} className="pokedexName">{pokedex.name}</button>);
-            })}
-        </>
-    );
+    fetchData();
+
+    //Use setSelections to Make sure the selections are what they need to be entering this component. No mattter the way
+    const selectedPokedex = (name) => {
+            setSelections({pokedex: name, pokemon: null});
+    }
+    //Callback to fetchData to get the information
     
+        
+
+    //event handler to select pokedex. This component does not need GO Back button since this will be the first component to be rendered
+    
+    return(
+        <div className="pokedexes">
+            {list.map(pokedex => {  
+                return (<a onClick={() => selectedPokedex(pokedex.name)} className="pokedexName">{pokedex.name}</a>);
+            })}
+        </div>
+    );  
 }
 
-export default Pokedex;
+export default PokedexList;
