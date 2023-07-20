@@ -1,13 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import PokedexList from "./Pokedex";
 import Pokemons from "./Pokemons";
 import PokeDetails from "./PokeDetails";
-const  _Pokedex =  require('pokeapi-js-wrapper');
-const pokedex = new _Pokedex.Pokedex();
 
+
+//This file controls what should be rendered at what point And keep track of where the user is
 const App = () => {
 
-    
     //Hold Errors
     const [hasErr, setErr] = useState('');
     
@@ -21,14 +20,11 @@ const App = () => {
         setSelections({pokedex: null, pokemon: null});
     }    
 
-
-
-
     return (
         <div className="App">
             <header>
-                <img className="PokemonLogo" src="/pokemonLogo.png" height="70" onClick={reset}/>
-                <h1>Pokedex</h1>
+                <img className="PokemonLogo" src="/pokemonLogo.png" height="70"alt="Pokemon logo" onClick={reset}/>
+                
                 <button onClick={reset} className="Home">Back to Home</button>
             </header>
 
@@ -57,9 +53,9 @@ export default App;
     //DONE: make a componet for every single pokemon should have name, abilities, base stats, and type TODO: try this first this might be easier
 
 
-    // handle both errors from the user and the api rejects for all the components and prevent the pokedex from rendering have all the errors be passed all the way back to the parent to handle them atleast the api one
+    //DONE: handle both errors from the user and the api rejects for all the components and prevent the pokedex from rendering have all the errors be passed all the way back to the parent to handle them atleast the api one
     //user alerts?
 
     //DONE: store the user interactions
 
-    // have a back button to move exactly one screen back. only visible after the pokedex has been selected.
+    //DONE: have a back button to move exactly one screen back. only visible after the pokedex has been selected.

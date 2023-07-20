@@ -1,56 +1,45 @@
+//Js-Wrapper used visit https://github.com/PokeAPI/pokeapi-js-wrapper/blob/master/README.md  for info 
 
-
-/**
- * Pokemons List renderer
- * @param  {function} fetch [An Anonymous function to fetch data from the Api.  required a string as a Parameter WARN: Calling the Function will change the contents of data]-
- * @param  {Object} selections [Will hold the current selections of the user Two Keys: Pokedex, and Pokemon; both are set to null]
- * @param  {callBack} setSelections [Callback funciton to Change the selecitons Object. WARN: Do Not Add OR Remove the existing Keys, Only change them]
- * @param  {array of Objects} data [current data needed to rerender]
- *      Current Data(before calling fetch) for this Component should be:
- * list of Pokedexes
- * @return {Component} Will return the List of Pokemons when called
- */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 const  _Pokedex =  require('pokeapi-js-wrapper');
 const pokedex = new _Pokedex.Pokedex();
 
+//This file renders The Pokemons upon call. It needs setErr(callback), setSelections(callback), selections(object), selections.pokedex must not be null for the file to run
 const Pokemons = ({setErr, selections, setSelections}) =>{
-    
-    //Use the setSelecitons to make sure the selections are what they need to be entering this Component
-    
-
-    //Using the pokedex's name to get the url that we need to go to
 
 
-    //Using a callback and Passing the url to fetchData
+    //Hook to hold data to display
     const [list, setList] = useState([]);
 
+    //Async function to fetch data from the Wrapper
     const fetchData = async () => {
         return await pokedex.getPokedexByName(selections.pokedex)
             .then(res => setList(res.pokemon_entries))
             .catch(err => setErr(err));
     }
-
     fetchData();
     
+
     //Event Handler when the user Selects a pokemon
      const selectedPokemon = (name) => {
         setSelections({...selections, pokemon: name});
      }
 
-     //Event Handler to go back Exactly one slide.
+     //Event Handler to go back Exactly one stage.
      const back = (event) =>{
         setSelections({pokedex: null, pokemon: null});
-        
     }
  
      return(
          <>
             <button onClick={back} className="backButton">Previous Page</button>
+
+            <h2>Select a Pokemon</h2>
+            
             <div className="pokemons">
                 {list.map(pokemons=> {
                  
-                return (<li onClick={() => selectedPokemon(pokemons.pokemon_species.name)} className="pokemonName">{pokemons.pokemon_species.name}</li>);
+                return (<div onClick={() => selectedPokemon(pokemons.pokemon_species.name)} className="pokemonName"><li>{pokemons.pokemon_species.name}</li></div>);
                 })}
             </div>
          </>
