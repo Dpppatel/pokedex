@@ -28,7 +28,7 @@ const App = () => {
                 <button onClick={reset} className="Home">Back to Home</button>
             </header>
 
-            {hasErr? alert('An Error Occured'): null}
+            {hasErr? alert('An Error Occured. Please Refresh'): null}
 
             {(!hasErr && (selections.pokedex === null) && (selections.pokemon === null))? (<PokedexList setErr={setErr} selections={selections} setSelections={setSelections} />):null}
             

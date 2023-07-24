@@ -7,7 +7,7 @@ const pokedex = new _Pokedex.Pokedex();
 //This file renders The Pokemons upon call. It needs setErr(callback), setSelections(callback), selections(object), selections.pokedex must not be null for the file to run
 const Pokemons = ({setErr, selections, setSelections}) =>{
 
-
+    let val = null;
     //Hook to hold data to display
     const [list, setList] = useState([]);
 
@@ -29,7 +29,7 @@ const Pokemons = ({setErr, selections, setSelections}) =>{
      const back = (event) =>{
         setSelections({pokedex: null, pokemon: null});
     }
- 
+    
      return(
          <>
             <button onClick={back} className="backButton">Previous Page</button>
@@ -37,9 +37,11 @@ const Pokemons = ({setErr, selections, setSelections}) =>{
             <h2>Select a Pokemon</h2>
             
             <div className="pokemons">
-                {list.map(pokemons=> {
-                 
-                return (<div onClick={() => selectedPokemon(pokemons.pokemon_species.name)} className="pokemonName"><li>{pokemons.pokemon_species.name}</li></div>);
+                {list.map(pokemons => {
+                    val = pokemons.pokemon_species.url;
+                    val = val.split('/').slice(-2, -1)
+
+                    return (<div onClick={() => selectedPokemon(pokemons.pokemon_species.name)} className="pokemonName" key={pokemons.pokemon_species.name}><li><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${val}.png`} alt='pokemon'></img>{pokemons.pokemon_species.name}</li></div>);
                 })}
             </div>
          </>
@@ -47,3 +49,5 @@ const Pokemons = ({setErr, selections, setSelections}) =>{
 }
 
 export default Pokemons;
+//const var = pokemons.url.split('/')
+//var[var.length-2]

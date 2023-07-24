@@ -4,10 +4,9 @@
 }
 
 body {
-  background-image: url("https://wallpaperaccess.com/full/3393147.png");
-  background-repeat: no-repeat;
+  background-image: url("/background.webp");
+  background-repeat: repeat;
   background-position: center;
-  background-size: cover;  
 }
   
 header{
@@ -28,11 +27,6 @@ h2, h3{
   justify-content: center;
 }
 
-.Icon{
-  mix-blend-mode: multiply;
-  filter: contrast(1);
-}
-
 .PokemonLogo{
   mix-blend-mode: multiply;
   filter: contrast(2);
@@ -42,11 +36,6 @@ h2, h3{
   margin-bottom: 20px;
   background-color: #CDCDCD;
   border: 2px solid #CDCDCD;
-}
-
-.Picture{
-  mix-blend-mode: multiply;
-  filter: contrast(1);
 }
 
 header h1{
@@ -153,7 +142,10 @@ header h1{
 li{
   color: #000;
   z-index: 1;
+  display: flex;
   break-inside: avoid-column;
+  align-items: center;
+  flex-direction: column;
 }
 
 .PokemonDetails{

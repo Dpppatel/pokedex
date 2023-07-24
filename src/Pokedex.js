@@ -29,7 +29,7 @@ const PokedexList = ({setErr, setSelections}) => {
         <h2>Select a Pokedex</h2>
         <div className="pokedexes">
             {list.map(pokedex => {  
-                return (<div onClick={() => selectedPokedex(pokedex.name)} className="pokedexName"><li>{pokedex.name}</li></div>);
+                return (<div onClick={() => selectedPokedex(pokedex.name)} className="pokedexName" key={pokedex.name}><li>{pokedex.name}</li></div>);
             })}
         </div>
         </>

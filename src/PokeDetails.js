@@ -27,6 +27,9 @@ const PokeDetails = ({setErr, selections, setSelections}) => {
         <>
             <button onClick={back} className="backButton">Previous Page</button>
             <table className="PokemonDetails" border=".5">
+                <thead></thead>
+                <tbody></tbody>
+                <tfoot></tfoot>
                 <tr>
                     <th>{selections.pokemon}</th>
                     <tr><img className="Picture" src={list[1]} alt={selections.pokemon} height='300'width='auto'></img></tr> 
@@ -51,7 +54,7 @@ const PokeDetails = ({setErr, selections, setSelections}) => {
                     </tr>
                 </tr>
             </table>
-            <button onClick={back} disabled className="Details" alt='Coming Soon'>More...</button>
+            <button onClick={back} disabled className="Details" title='Coming Soon'>More...</button>
         </>
         
     )
