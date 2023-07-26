@@ -2,6 +2,9 @@ import { useState } from "react";
 import PokedexList from "./Pokedex";
 import Pokemons from "./Pokemons";
 import PokeDetails from "./PokeDetails";
+import { Pokedex } from 'pokeapi-js-wrapper';
+
+const pokedex = new Pokedex({cacheImages:true});
 
 
 //This file controls what should be rendered at what point And keep track of where the user is
@@ -30,11 +33,11 @@ const App = () => {
 
             {hasErr? alert('An Error Occured. Please Refresh'): null}
 
-            {(!hasErr && (selections.pokedex === null) && (selections.pokemon === null))? (<PokedexList setErr={setErr} selections={selections} setSelections={setSelections} />):null}
+            <div data-testid="Pokedexes">{(!hasErr && (selections.pokedex === null) && (selections.pokemon === null))? (<PokedexList pokedex={pokedex} setErr={setErr} selections={selections} setSelections={setSelections} />):null}</div>
             
-            <div>{(!hasErr && (selections.pokedex !== null) && (selections.pokemon === null))? (<Pokemons setErr={setErr} selections={selections} setSelections={setSelections} />): null}</div>
+            <div data-testid="Pokemons">{(!hasErr && (selections.pokedex !== null) && (selections.pokemon === null))? (<Pokemons pokedex={pokedex} setErr={setErr} selections={selections} setSelections={setSelections} />): null}</div>
             
-            <div>{(!hasErr && (selections.pokedex !== null) && (selections.pokemon !== null))? (<PokeDetails setErr={setErr} selections={selections}  setSelections={setSelections}/>): null}</div>
+            <div data-testid="Pokedetails">{(!hasErr && (selections.pokedex !== null) && (selections.pokemon !== null))? (<PokeDetails pokedex={pokedex} setErr={setErr} selections={selections}  setSelections={setSelections}/>): null}</div>
         </div>
     )
 }
