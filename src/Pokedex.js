@@ -19,7 +19,7 @@ const PokedexList = ({pokedex, setErr, setSelections}) => {
         fetchData();
     })
 
-   //event handler to select pokedex. This component does not need GO Back button since this will be the first component to be rendered
+   //event handler to select pokedex.
     const selectedPokedex = (name) => {
         setSelections({pokedex: name, pokemon: null});
     }

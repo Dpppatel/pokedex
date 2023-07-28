@@ -24,10 +24,30 @@
   background: #b30000; 
 }
 
+
+.searchbar, .next{
+  display: flex;
+  padding:15px;
+  border-radius: 10px;
+}
+
+
+
+input[type=text] {
+   width: 10%;
+   -webkit-transition: width 0.15s ease-in-out;
+   transition: width 0.15s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 15%;
+}
+
 body {
   background-image: url("/background.webp");
   background-repeat: repeat;
   background-position: center;
+  text-transform: capitalize;
 }
   
 header{
@@ -85,13 +105,24 @@ header h1{
 
 .backButton, .Details{
   display: flex;
-  background-color: #000;
+  background-color:#000;
   color: #fff;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
   margin: 5px;
+  width: fit-content;
 }/*Back button*/
+
+.Log{
+  display: flex;
+  background-color: #0075BE;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
+  width: max-content;
+}
 
 .backButton:hover{
   background-color: #fff;
@@ -198,4 +229,8 @@ td {
 tr {
   text-align: center;
   align-items:center;
+}
+
+#image:hover{
+  cursor: pointer;;
 }

@@ -47,4 +47,3 @@ const Pokemons = ({pokedex, setErr, selections, setSelections}) =>{
 }
 
 export default Pokemons;
-//<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemons.pokemon_species.url.split('/').slice(-2, -1)[0]}.png`} alt='pokemon'></img>
