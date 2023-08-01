@@ -18,7 +18,7 @@ const App = () => {
                     <input disabled className='searchbar' type="text" placeholder="Search for a Pokemon"/>
                     <button onClick={reset} className="Home">Back to Home</button>
                 </header>
-                <img className='trial' src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/152.png'/>
+                {/* <img className='trial' src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/152.png'/> */}
                 <h2>What Would you like to do?</h2>
                 <div className='pokedexName' onClick={()=>setUserDesc('pokedex')}><li>Go to Pokedexes</li></div>
                 <div className='pokedexName' onClick={()=>setUserDesc('quiz')}><li>Take a Quiz!</li></div>
