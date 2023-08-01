@@ -34,7 +34,7 @@ const Pokemons = ({pokedex, setErr, selections, setSelections}) =>{
         <>
         <button onClick={back} className="backButton">Previous Page</button>
 
-        <h2>Select a Pokemon</h2>
+        <h2>Select a Pokemon from listed {list.length}</h2>
         
         <div className="pokemons">
             {list.map(pokemons => {          

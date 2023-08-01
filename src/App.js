@@ -1,41 +1,39 @@
-import { useState, useRef } from "react";
-import PokedexList from "./Pokedex";
-import Pokemons from "./Pokemons";
-import PokeDetails from "./PokeDetails";
-import {Pokedex} from 'pokeapi-js-wrapper';
+import React, { useState } from "react";
+import PokedexApp from "./Pokedex App Pages/PokedexApp";
+import Gen from "./Quizes App Pages/Gen";
 
 
-//This file controls what should be rendered at what point And keep track of where the user is
 const App = () => {
-    const pokedex = useRef(new Pokedex({cacheImages:true})); 
-    //Hold Errors
-    const [hasErr, setErr] = useState('');
-    
-    //Hold user Selections
-    const [selections, setSelections] = useState({pokedex: null, pokemon: null}); 
+    const [userDesc, setUserDesc] = useState('');
 
-    //reset event handler will stay on the top always
     const reset = (event) => {
-        setSelections({pokedex: null, pokemon: null});
-    }    
+        setUserDesc('');
+    }   
 
-    return (
-        <div className="App">
+    if(!userDesc){
+        return (
+            <div>
+                <header>
+                    <img className="PokemonLogo" src="/pokemonLogo.png" height="70"alt="Pokemon logo" onClick={reset}/>
+                    <input disabled className='searchbar' type="text" placeholder="Search for a Pokemon"/>
+                    <button onClick={reset} className="Home">Back to Home</button>
+                </header>
+                <img className='trial' src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/152.png'/>
+                <h2>What Would you like to do?</h2>
+                <div className='pokedexName' onClick={()=>setUserDesc('pokedex')}><li>Go to Pokedexes</li></div>
+                <div className='pokedexName' onClick={()=>setUserDesc('quiz')}><li>Take a Quiz!</li></div>
+            </div>)
+    }
+    return(<>
             <header>
                 <img className="PokemonLogo" src="/pokemonLogo.png" height="70"alt="Pokemon logo" onClick={reset}/>
                 <input disabled className='searchbar' type="text" placeholder="Search for a Pokemon"/>
                 <button onClick={reset} className="Home">Back to Home</button>
             </header>
-
-            {hasErr? 'An Error Occured. Please Refresh': null}
-
-            <div data-testid="Pokedexes">{(!hasErr && (selections.pokedex === null) && (selections.pokemon === null))? (<PokedexList pokedex={pokedex.current} setErr={setErr} selections={selections} setSelections={setSelections} />):null}</div>
-            
-            <div data-testid="Pokemons">{(!hasErr && (selections.pokedex !== null) && (selections.pokemon === null))? (<Pokemons pokedex={pokedex.current} setErr={setErr} selections={selections} setSelections={setSelections} />): null}</div>
-            
-            <div data-testid="Pokedetails">{(!hasErr && (selections.pokedex !== null) && (selections.pokemon !== null))? (<PokeDetails pokedex={pokedex.current} setErr={setErr} selections={selections}  setSelections={setSelections}/>): null}</div>
-        </div>
-    )
+       
+        {userDesc==='pokedex'? <PokedexApp home={setUserDesc}/>:null}
+        {userDesc==='quiz'? <Gen home={setUserDesc}/>: null}
+    </>)
 }
 
 export default App;

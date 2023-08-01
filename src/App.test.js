@@ -1,6 +1,6 @@
 import {Pokedex} from 'pokeapi-js-wrapper';
 import { render, cleanup, screen, fireEvent, findByText } from '@testing-library/react';
-import App from './App';
+import App from './Pokedex App Pages/PokedexApp';
 
 jest.mock('pokeapi-js-wrapper');
 
@@ -45,7 +45,9 @@ describe('Integretion testing on full function', () => {
     fireEvent.click(await screen.findByText('national'));
     fireEvent.click(await screen.findByText('bulbasaur'));
 
-    await screen.findByText('Types');
+    await screen.findByText('bulbasaur');
+    await screen.findByText('grass');
+    await screen.findByText('overgrow');
   });
 
 

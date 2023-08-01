@@ -36,6 +36,6 @@
     ]
   },
   "devDependencies": {
-    "pokeapi-js-wrapper": "^1.2.2"
+    "pokeapi-js-wrapper": "^1.2.3"
   }
 }
