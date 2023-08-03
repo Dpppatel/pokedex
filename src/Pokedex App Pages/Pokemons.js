@@ -21,8 +21,8 @@ const Pokemons = ({pokedex, setErr, selections, setSelections}) =>{
     
 
     //Event Handler when the user Selects a pokemon
-    const selectedPokemon = (name) => {
-        setSelections({...selections, pokemon: name.split('/').slice(-2, -1)[0]});
+    const selectedPokemon = (url) => {
+        setSelections({...selections, pokemon: url.split('/').slice(-2, -1)[0]});
     }
 
      //Event Handler to go back Exactly one stage.

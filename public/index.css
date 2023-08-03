@@ -36,13 +36,14 @@
 
 
 input[type=text] {
-   width: 10%;
+  display: flex;
+   width: 20%;
    -webkit-transition: width 0.15s ease-in-out;
    transition: width 0.15s ease-in-out;
 }
 
 input[type=text]:focus {
-  width: 15%;
+  width: 50%;
 }
 
 body {
@@ -65,7 +66,6 @@ header{
 
 h2, h3{
   display: flex;
-  font-family: "Pokemon Solid";
   font-size: 40px;
   color: #000;
   margin: 30px;
@@ -243,4 +243,20 @@ tr {
   filter: contrast(2);
   outline: 1px solid black;
   outline-offset: -2px;
+}
+
+.t{
+  display: block;
+  width: 100px;
+}
+
+.pokemonsImage{
+  background: #fff;
+  margin: 10%;
+}
+.quiz{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }

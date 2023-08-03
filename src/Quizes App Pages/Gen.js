@@ -13,7 +13,7 @@ const Gen = ({home}) => {
     //Async function to fetch data from the Wrapper
     useEffect(()=>{
         const fetchData = async () => {
-            return await pokedex.getRegionsList()
+            return await pokedex.getGenerationsList()
                 .then(res => setList(res.results))
                 .catch(err => setErr(err));
         }
@@ -29,16 +29,17 @@ const Gen = ({home}) => {
         home('');
     }
 
-    if(hasErr) return<div>An Error Occurred</div>;
+    if(hasErr) {return<div>An Error Occurred</div>};
+
     return (
     <div>
-         <button onClick={back} className="backButton">Previous Page</button>
+         
         
-        {selection? <Quiz pokedex={pokedex} selection={selection} />: <div className="pokedexes">
-            {list.map(generation => {  
-                return (<div onClick={() => setSelections(generation.name)} className="pokedexName" key={generation.name}><li>{generation.name}</li></div>);
+        {selection? <Quiz pokedex={pokedex} selection={selection} />: <><button onClick={back} className="backButton">Previous Page</button><div className="pokedexes">
+            {list.map((generation, i) => {  
+                return (<div onClick={() => setSelections(generation.name)} className="pokedexName" key={i+1}><li>{`Gen ${i+1}`}</li></div>);
             })}
-        </div> }
+        </div></> }
     </div>)
 }
 
