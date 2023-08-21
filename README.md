@@ -10,4 +10,4 @@ Evolution chains showing with the pokemon data
 Spelling checks and suggestions for the user to type.
 Better visuals
 
-Data used from Pokeapi.co
+#Data used from Pokeapi.co
